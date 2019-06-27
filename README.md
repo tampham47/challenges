@@ -1,67 +1,39 @@
-<p align="center">
-  <a href='https://www.omise.co'>
-    <img src="https://cdn.omise.co/assets/omise-logo/omise-wordmark.png" width="300" />
-  </a>
-</p>
-<br />
+# Get started
 
+This project consists 2 parts, server and client.
 
-**Tamboon React** is a code challenge for frontend developer.
+The server side was built by `json-server`, that helps create a group of APIs very quick, in just 30 secs.
+The client side was build with React. It also used a trendy css frame work, `styled-components`. You might love it.
 
-## Scenario
-Once upon a time.. nope!  
-So here, you have been temporarily hired by Omise and assigned to work on the charity donation project which the previously assigned front-end developer and designer got the urgent matters to solve, so they will not be able to finish the project on time..
+So, to get started, you need to install all the dependencies first, by running the command `npm install`, then running the following commands in different thread.
 
-Fortunately, the API server is already done. You will need to grab on the requirements and complete the project while ensuring the application to have great engineering and well-design ✨
+1. `npm run server`
+2. `npm run client`
 
-![tamboon-react-screenshot](https://git.omise.co/storage/user/56/files/b407c6c4-ad09-11e7-8792-dc5b468333df)
+The main app will run in port 3000 by default, whereas the APIs will be served in 3001. Now you can open your browser and enter this URL http://localhost:3000 to access project `Kamereo Tamboon`.
 
-## Mission
-Well, grap your guns, stock up your food and bring down your armor. We gonna need it for tonight!  
-**Here are the tasks you must complete:**
+You can run `npm run test`, to test your application as well.
 
-- [ ] Complete the application according to the design (image above).
-- [ ] Complete these features that are not in the design (you have freedom to design and position to display).
-  - Display all donation amount.
-  - Display a message when paid.
-- [ ] Make the donation feature works correctly.
-  - Amount in all donations should be displayed correctly despite users close and come back later.
-  - Database (db.json) should have the new valid data when paid.
-- [ ] Refactor the code to be more readable and enhance reusability.
-- [ ] Use only [styled-component](https://www.styled-components.com/) for styling part.
-- [ ] Write a nice commit message and order it well.
-- [ ] Display well in most modern browser (Google Chrome, Safari, Firefox).
+## Project Kamereo Tamboon
 
-#### Bonus
-- [ ] Supporting different screen sizes (responsive).
-- [ ] Write helpers or components unit tests with [jest](https://facebook.github.io/jest/).
+You can find the requirements of this project [here](/requirements.md).
 
-## Rules
-Desire to win the war? Well, to make it a little more fun, please remember that
+![Kamereo Tamboon](/resources/kamereo.png)
 
-**You cannot:**
-- Change existing behaviors.
-- Change the API server.
-- Change from JS to other languages.
+What I've done in this project?
 
-**In the other hand, feel free to:**
-- Improve the design to have better UI and UX.
-- Re-organize the codebase.
-- Create new modules/methods/components.
-- Modify existing code.
-- Add new packages.
-- Update `webpack` config.
-- Take reasonable time to complete the challenge, no need to rush.
-- Edit `README.md` to add documentation. What have you done or how to run or test your app?
+1. Update the layout as provided design.
+2. Split Card into another component, to maintain easier in the future.
+3. Create a fancy grateful popout after donating.
+4. Using the approach of mobile first while working on responsive things.
+5. In this scope, I covered 2 screen sizes: mobile and desktop.
+6. Get rid of the old-fashioned style, self, to improve productivity when coding in the future.
+7. Add fav icons and app icons. I hate when seeing a website without favicon, it seems like an undone website. App icons help out website look cool when user pin it on their own screen on mobile.
+8. Upgrade webpack to the newest version.
+9. Fix the spec, then I can run the test well.
+10. Store `API_PATH` to a constant, maybe in future we might want to save it `config` file, to keep all components consistency.
+11. A new donation cannot store in DB well, because content-type is missing when calling a request, I added it.
+12. Add normalize.css to make sure that the website will be displayed the same across browsers.
+13. This website has been tested on 3 browsers: Chrome, Safari and Brave.
 
-
-**Note**: You can see design inside folder `resources`.
-
-
-## Surprise us!
-
-Please remember that your patch must consist of multiple separate commits. Your commit message must communicate clearly what has been done in each commit.
-
-If you notice more bugs in the original implementation you can add fixes for those as well. You won't be penalized if you don't. However we ask you not to add more features than the one given in the mission list.
-
-Let's rock! :metal:
+Thank you for giving me an interesting test 🎉
