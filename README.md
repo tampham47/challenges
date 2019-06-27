@@ -14,7 +14,7 @@ The main app will run in port 3000 by default, whereas the APIs will be served i
 
 You can run `npm run test`, to test your application as well.
 
-## Project Makereo Tamboon
+## Project Kamereo Tamboon
 
 You can find the requirements of this project [here](/requirements.md).
 
@@ -36,4 +36,4 @@ What I've done in this project?
 12. Add normalize.css to make sure that the website will be displayed the same across browsers.
 13. This website has been tested on 3 browsers: Chrome, Safari and Brave.
 
-Thank you for giving me an interesting test.
+Thank you for giving me an interesting test 🎉
