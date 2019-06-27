@@ -47,32 +47,80 @@ const Button = styled.button`
   padding: 0.5em 1em;
 `;
 
+const Popout = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.95);
+  text-align: center;
+`;
+const PopoutBody = styled.div`
+  padding-top: 3em;
+`;
+const CloseBtn = styled.button`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  border: 0;
+`;
+const Helper = styled.p``;
+const CheckWrp = styled.div`
+  margin-bottom: 2em;
+`;
+const CheckItem = styled.label`
+  padding: 0.7em;
+  input {
+    margin-right: 6px;
+    vertical-align: text-top;
+  }
+`;
+
 
 export default class CardComp extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      selectedAmount: 0,
+      isDonate: false,
+    };
+
     this.handlePay = this.handlePay.bind(this);
+    this.setSelectedAmount = this.setSelectedAmount.bind(this);
+    this.donate = this.donate.bind(this);
+    this.dismiss = this.dismiss.bind(this);
   }
 
   handlePay() {
     const { model } = this.props;
-    this.props.handlePay(model.id, 10, model.currency);
+    const { selectedAmount } = this.state;
+    if (!selectedAmount) { return; }
+    this.props.handlePay(model.id, selectedAmount, model.currency);
+    setTimeout(() => {
+      this.dismiss();
+    }, 2000);
+  }
+
+  setSelectedAmount(amount) {
+    this.setState({
+      selectedAmount: amount,
+    });
+  }
+
+  donate() {
+    this.setState({ isDonate: true });
+  }
+  dismiss() {
+    this.setState({ isDonate: false });
   }
 
   render() {
     const { model } = this.props;
-
-    const payments = [10, 20, 50, 100, 500].map((amount, j) => (
-      <label key={j}>
-        <input
-          type="radio"
-          name="payment"
-          onClick={function() {
-            self.setState({ selectedAmount: amount })
-          }} /> {amount}
-      </label>
-    ));
+    const { isDonate } = this.state;
 
     return (
       <Card>
@@ -81,12 +129,28 @@ export default class CardComp extends Component {
         </ImgWrp>
         <ToolbarWrp>
           <Title>{model.name}</Title>
-          <Button>Donate</Button>
+          <Button onClick={this.donate}>Donate</Button>
         </ToolbarWrp>
-        <div style={{ display: 'none' }}>
-          {payments}
-          <Button onClick={this.handlePay}>Pay</Button>
-        </div>
+
+        {isDonate && (
+          <Popout>
+            <CloseBtn onClick={this.dismiss}>✕</CloseBtn>
+            <PopoutBody>
+              <Helper>Select the amount to donate ({model.currency})</Helper>
+              <CheckWrp>
+                {[10, 20, 50, 100, 500].map((amount) => (
+                  <CheckItem key={amount}>
+                    <input
+                      type="radio"
+                      name="payment"
+                      onClick={this.setSelectedAmount.bind(this, amount)} />{amount}
+                  </CheckItem>
+                ))}
+              </CheckWrp>
+              <Button onClick={this.handlePay}>Pay</Button>
+            </PopoutBody>
+          </Popout>
+        )}
       </Card>
     );
   }

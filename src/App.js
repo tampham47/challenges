@@ -55,43 +55,49 @@ export default connect((state) => state)(
     }
 
     componentDidMount() {
-      const self = this;
-
       fetch('http://localhost:3001/charities')
-        .then(function(resp) { return resp.json(); })
-        .then(function(data) {
-          self.setState({ charities: data }) });
-
+        .then(resp => resp.json())
+        .then(data => {
+          this.setState({ charities: data }) 
+        });
+          
       fetch('http://localhost:3001/payments')
-        .then(function(resp) { return resp.json() })
-        .then(function(data) {
-          self.props.dispatch({
+        .then(resp => resp.json())
+        .then(data => {
+          this.props.dispatch({
             type: 'UPDATE_TOTAL_DONATE',
             amount: summaryDonations(data.map((item) => (item.amount))),
           });
-        })
+        });
     }
 
     handlePay(id, amount, currency) {
-      const self = this;
+      const body = {
+        charitiesId: id,
+        amount,
+        currency,
+      };
 
       fetch('http://localhost:3001/payments', {
         method: 'POST',
-        body: `{"charitiesId": ${id}, "amount": ${amount}, "currency": "${currency}" }`,
+        headers: { 
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
       })
-        .then(function(resp) { return resp.json(); })
-        .then(function() {
-          self.props.dispatch({
+        .then(resp => resp.json())
+        .then(() => {
+          this.props.dispatch({
             type: 'UPDATE_TOTAL_DONATE',
             amount,
           });
-          self.props.dispatch({
+          this.props.dispatch({
             type: 'UPDATE_MESSAGE',
             message: `Thanks for donate ${amount}!`,
           });
 
-          setTimeout(function() {
-            self.props.dispatch({
+          setTimeout(() => {
+            this.props.dispatch({
               type: 'UPDATE_MESSAGE',
               message: '',
             });
