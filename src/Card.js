@@ -5,9 +5,8 @@ const Card = styled.div`
   border: 1px solid #ccc;
   border-radius: 4px;
   overflow: hidden;
-  margin-bottom: 1em;
   position: relative;
-  max-width: 400px;
+  max-width: 100%;
   box-shadow: 3px 3px 6px #dcdcdc;
 `;
 const ImgWrp = styled.div`
