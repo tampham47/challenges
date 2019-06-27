@@ -12,8 +12,22 @@ const Container = styled.section`
   margin-left: auto;
   margin-right: auto;
 `;
+const Kamereo = styled.h1`
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  color: #2F904F;
+`;
+const DonateSummary = styled.div`
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  overflow: hidden;
+  background: linear-gradient(50.72deg, rgb(102, 126, 234) 17.58%, rgba(118, 75, 162, 0.8) 93.14%);
+  margin-bottom: 1em;
+  color: white;
+`;
 const CardWrp = styled.div`
-  margin-bottom: 8em;
   /* responsive for mobile first */
   @media only screen and (min-width: 56rem) {
     display: flex;
@@ -61,6 +75,13 @@ const MessageBody = styled.div`
     margin-left: auto;
     margin-right: auto;
   }
+`;
+const Footer = styled.footer`
+  margin-top: 8em;
+  margin-bottom: 1em;
+  text-align: center;
+  opacity: 0.8;
+  font-size: 0.8rem;
 `;
 
 export default connect((state) => state)(
@@ -133,8 +154,8 @@ export default connect((state) => state)(
 
       return (
         <Container>
-          <h1>Kamereo Tamboon</h1>
-          <p>All donations: {donate}</p>
+          <Kamereo>Kamereo Tamboon</Kamereo>
+          <DonateSummary>All donations: {donate} THB</DonateSummary>
 
           {message && (
             <Message>
@@ -152,6 +173,8 @@ export default connect((state) => state)(
               </CardItem>
             ))}
           </CardWrp>
+
+          <Footer>Build with ❤️ by Tampham47</Footer>
         </Container>
       );
     }
