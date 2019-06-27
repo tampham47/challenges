@@ -18,7 +18,7 @@ You can run `npm run test`, to test your application as well.
 
 You can find the requirements of this project [here](/requirements.md).
 
-![Kamereo Tamboon](/resources/kamereo.png)
+![Kamereo Tamboon](/resources/kamereo2.png)
 
 What I've done in this project?
 
