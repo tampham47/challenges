@@ -84,6 +84,8 @@ const Footer = styled.footer`
   font-size: 0.8rem;
 `;
 
+const API_PATH = 'http://localhost:3001';
+
 export default connect((state) => state)(
   class App extends Component {
     constructor(props) {
@@ -98,13 +100,13 @@ export default connect((state) => state)(
     }
 
     componentDidMount() {
-      fetch('http://localhost:3001/charities')
+      fetch(`${API_PATH}/charities`)
         .then(resp => resp.json())
         .then(data => {
           this.setState({ charities: data }) 
         });
           
-      fetch('http://localhost:3001/payments')
+      fetch(`${API_PATH}/payments`)
         .then(resp => resp.json())
         .then(data => {
           this.props.dispatch({
@@ -121,7 +123,7 @@ export default connect((state) => state)(
         currency,
       };
 
-      fetch('http://localhost:3001/payments', {
+      fetch(`${API_PATH}/payments`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
