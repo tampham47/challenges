@@ -33,12 +33,34 @@ const CardItem = styled.div`
     margin-bottom: 2em;
   }
 `;
-const Message = styled.p`
-  color: red;
-  margin: 1em 0;
-  font-weight: bold;
-  font-size: 16px;
+
+const Message = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 9;
+`;
+const MessageBody = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  max-width: calc(100% - 2rem);
+  width: 280px;
+  padding: 2rem;
+  border-radius: 4px;
+  background-color: whitesmoke;
   text-align: center;
+  font-size: 1rem;
+
+  img {
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export default connect((state) => state)(
@@ -111,9 +133,17 @@ export default connect((state) => state)(
 
       return (
         <Container>
-          <h1>Kamereo Tamboon React</h1>
+          <h1>Kamereo Tamboon</h1>
           <p>All donations: {donate}</p>
-          <Message>{message}</Message>
+
+          {message && (
+            <Message>
+              <MessageBody>
+                <img src="/images/heart.png" alt="donate" />
+                <p>Thank you for your donation!</p>
+              </MessageBody>
+            </Message>
+          )}
 
           <CardWrp>
             {charities.map((item, i) => (
