@@ -16,7 +16,8 @@ The main app will run in port 3000 by default, whereas the APIs will be served i
 Btw, you can run `npm run test`, to test your application.
 
 
-## Project Kamero Tamboon
+## Project Kamereo Tamboon
 
 You can find the requirements of this project [here](/requirements.md).
-![Kamereo Tamboon](/resources/makereo-tamboon.png)
+
+![Kamereo Tamboon](/resources/kamereo-tamboon.png)
