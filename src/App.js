@@ -4,48 +4,12 @@ import styled from 'styled-components';
 import fetch from 'isomorphic-fetch';
 
 import { summaryDonations } from './helpers';
-
+import Card from './Card';
 
 const Container = styled.section`
   max-width: 48rem;
   margin-left: 1rem;
   margin-right: 1rem;
-`;
-
-const Card = styled.div`
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 1em;
-  position: relative;
-  max-width: 400px;
-`;
-const ImgWrp = styled.div`
-  position: absolute;
-  z-index: -1;
-  height: 170px;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
-`;
-const Img = styled.img`
-  width: 100%;
-`;
-const ToolbarWrp = styled.div`
-  margin-top: 170px;
-  display: flex;
-  background-color: white;
-`;
-const Title = styled.h6`
-  margin: 0;
-  flex: auto;
-`;
-const Button = styled.button`
-  border: 1px solid blue;
-  color: blue;
-  background-color: white;
 `;
 const Message = styled.p`
   color: red;
@@ -54,50 +18,6 @@ const Message = styled.p`
   font-size: 16px;
   text-align: center;
 `;
-
-
-class CardComp extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handlePay = this.handlePay.bind(this);
-  }
-
-  handlePay() {
-    const { model } = this.props;
-    this.props.handlePay(model.id, 10, model.currency);
-  }
-
-  render() {
-    const { model } = this.props;
-
-    const payments = [10, 20, 50, 100, 500].map((amount, j) => (
-      <label key={j}>
-        <input
-          type="radio"
-          name="payment"
-          onClick={function() {
-            self.setState({ selectedAmount: amount })
-          }} /> {amount}
-      </label>
-    ));
-
-    return (
-      <Card>
-        <ImgWrp>
-          <Img src={`/images/${model.image}`} alt={model.name} />
-        </ImgWrp>
-        <ToolbarWrp>
-          <Title>{model.name}</Title>
-        </ToolbarWrp>
-        <div>
-          {payments}
-          <Button onClick={this.handlePay}>Pay</Button>
-        </div>
-      </Card>
-    );
-  }
-}
 
 export default connect((state) => state)(
   class App extends Component {
@@ -168,7 +88,7 @@ export default connect((state) => state)(
           <Message>{message}</Message>
 
           {charities.map((item, i) => (
-            <CardComp key={i} model={item} handlePay={this.handlePay} />
+            <Card key={i} model={item} handlePay={this.handlePay} />
           ))}
         </Container>
       );
