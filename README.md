@@ -12,7 +12,7 @@ So, to get started, you need to install all the dependencies first, by running t
 
 The main app will run in port 3000 by default, whereas the APIs will be served in 3001. Now you can open your browser and enter this URL http://localhost:3000 to access project `Kamereo Tamboon`.
 
-Btw, you can run `npm run test`, to test your application.
+You can run `npm run test`, to test your application as well.
 
 ## Project Makereo Tamboon
 
@@ -34,3 +34,6 @@ What I've done in this project?
 10. Store `API_PATH` to a constant, maybe in future we might want to save it `config` file, to keep all components consistency.
 11. A new donation cannot store in DB well, because content-type is missing when calling a request, I added it.
 12. Add normalize.css to make sure that the website will be displayed the same across browsers.
+13. This website has been tested on 3 browsers: Chrome, Safari and Brave.
+
+Thank you for giving me an interesting test.
